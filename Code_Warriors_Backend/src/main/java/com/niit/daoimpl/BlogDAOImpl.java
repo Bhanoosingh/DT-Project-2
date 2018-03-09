@@ -1,11 +1,13 @@
 package com.niit.daoimpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +20,13 @@ public class BlogDAOImpl implements BlogDAO{
 	@Autowired
 	SessionFactory sessionFactory;
 
+	@Autowired
+	public BlogDAOImpl(SessionFactory sessionFactory) {
+		
+		super();
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@Transactional
 	@Override
 	public boolean addBlog(Blog blog) {
@@ -97,6 +106,15 @@ public class BlogDAOImpl implements BlogDAO{
 	@Override
 	public List<Blog> lisBlog(String userName){
 		
-		return null;
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			List<Blog> blogList = new ArrayList<Blog>();
+			Query query = session.createQuery("FROM Blog where username=:username").setString("username",userName);
+			blogList = query.list();
+			return blogList;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

@@ -11,22 +11,21 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.niit.dao.ForumDAO;
-import com.niit.model.Blog;
-import com.niit.model.Forum;
+import com.niit.dao.JobDAO;
+import com.niit.model.Job;
 
 @Repository
-public class ForumDAOImpl implements ForumDAO {
+public class JobDAOImpl implements JobDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
 	
 	@Transactional
 	@Override
-	public boolean addForum(Forum forum) {
+	public boolean addJob(Job job) {
 		
 		try {
-			sessionFactory.getCurrentSession().save(forum);
+			sessionFactory.getCurrentSession().save(job);
 			return true;
 		}catch(Exception exception) {
 			return false;
@@ -35,10 +34,10 @@ public class ForumDAOImpl implements ForumDAO {
 
 	@Transactional
 	@Override
-	public boolean deleteForum(Forum forum) {
-
+	public boolean deleteJob(Job job) {
+		
 		try {
-			sessionFactory.getCurrentSession().delete(forum);
+			sessionFactory.getCurrentSession().delete(job);
 			return true;
 		}catch(Exception exception) {
 			return false;
@@ -47,10 +46,10 @@ public class ForumDAOImpl implements ForumDAO {
 
 	@Transactional
 	@Override
-	public boolean updateForum(Forum forum) {
+	public boolean updateJob(Job job) {
 		
 		try {
-			sessionFactory.getCurrentSession().update(forum);
+			sessionFactory.getCurrentSession().update(job);
 			return true;
 		}catch(Exception exception) {
 			return false;
@@ -58,30 +57,36 @@ public class ForumDAOImpl implements ForumDAO {
 	}
 
 	@Override
-	public Forum getForum(int forumId) {
+	public Job getJob(int jobId) {
 		
 		try {
 			Session session = sessionFactory.openSession();
-			Forum forum = session.get(Forum.class, forumId);
-			return forum;
-		}catch(Exception exception) {
+			Job job = session.get(Job.class, jobId);
+			return job;
+		} catch (Exception e) {
 			return null;
 		}
 	}
 
 	@Override
-	public List<Forum> lisForum(String userName) {
+	public List<Job> lisJob(int jobId) {
 		
 		try {
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			List<Forum> forumList = new ArrayList<Forum>();
-			Query query = session.createQuery("FROM Forum where username=:username").setString("username",userName);
-			forumList = query.list();
-			return forumList;
+			List<Job> jobList = new ArrayList<Job>();
+			Query query = session.createQuery("FROM Job where jobId=:jobId").setInteger("jobId",jobId);
+			jobList = query.list();
+			return jobList;
 		} catch (Exception e) {
 			return null;
-		}
+}
+	}
+
+	@Override
+	public boolean applyJob(Job job) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
