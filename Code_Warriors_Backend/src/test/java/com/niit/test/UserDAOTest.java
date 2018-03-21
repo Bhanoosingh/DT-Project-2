@@ -59,4 +59,10 @@ public class UserDAOTest {
 		
 		System.out.println("<-----------Successfully deleted user-------->");
 	}*/
+	
+	/*@Test
+	public void getUserTest() {
+		
+		assertEquals("Record retrieved successfully",true,userDao.getUser("shailendra@niit.com"));
+	}*/
 }

@@ -1,2 +1,4 @@
 com\niit\test\BlogDAOTest.class
 com\niit\test\ForumDAOTest.class
+com\niit\test\JobDAOTest.class
+com\niit\test\UserDAOTest.class
