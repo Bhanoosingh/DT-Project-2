@@ -4,8 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="Blog")
@@ -17,10 +20,19 @@ public class Blog {
 	
 	String blogName;
 	String blogContent;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	Date createDate;
 	String userName;
 	String status;
+	int likes; 
 	
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
 	public int getBlogId() {
 		return blogId;
 	}

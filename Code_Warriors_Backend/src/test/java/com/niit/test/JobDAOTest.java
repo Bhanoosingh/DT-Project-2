@@ -33,7 +33,7 @@ public class JobDAOTest {
 		job.setJobDescription("Should have frameworks knowledge");
 		job.setSalary("150000");
 		job.setPostedDate(textFormat.parse("2017-06-18"));
-		assertEquals("Successfully added job into the table", true, jobDao.addJob(job));
+		assertEquals("Problem in adding job into the table", true, jobDao.addJob(job));
 		
 		System.out.println("<-----------Successfully added into job-------->");
 	}*/
@@ -48,7 +48,7 @@ public class JobDAOTest {
 		job.setSalary("150000");
 		job.setDesgination("Java Developer");
 		job.setPostedDate(textFormat.parse("2017-06-18"));
-		assertEquals("Successfully updated status of forum", true, jobDao.updateJob(job));
+		assertEquals("Problem in updating status of forum", true, jobDao.updateJob(job));
 		
 		System.out.println("<-----------Successfully updated into forum-------->");
 	}*/
@@ -57,7 +57,7 @@ public class JobDAOTest {
 	public void deleteForumTest() {
 		
 		job.setJobId(6);
-		assertEquals("Successfully deleted job", true, jobDao.deleteJob(job));
+		assertEquals("Problem in deleting job", true, jobDao.deleteJob(job));
 		
 		System.out.println("<-----------Successfully deleted job-------->");
 	}*/

@@ -31,7 +31,7 @@ public class UserDAOTest {
 		user.setRole("Admin");
 		user.setAddress("Agra");
 		user.setPhone("9898989889");
-		assertEquals("Successfully added user into the table", true, userDao.addUser(user));
+		assertEquals("Problem in adding user into the table", true, userDao.addUser(user));
 		
 		System.out.println("<-----------Successfully added into user-------->");
 	}*/
@@ -46,7 +46,7 @@ public class UserDAOTest {
 		user.setAddress("Agra");
 		user.setPhone("9898989889");
 		user.setEnabled(true);
-		assertEquals("Successfully updated status of forum", true, userDao.updateUser(user));
+		assertEquals("Problem in updating status of forum", true, userDao.updateUser(user));
 		
 		System.out.println("<-----------Successfully updated into user-------->");
 	}*/
@@ -55,7 +55,7 @@ public class UserDAOTest {
 	public void deleteForumTest() {
 		
 		user.setEmail("shailendra@niit.com");
-		assertEquals("Successfully deleted job", true, userDao.deleteUser(user));
+		assertEquals("Problem in deleting job", true, userDao.deleteUser(user));
 		
 		System.out.println("<-----------Successfully deleted user-------->");
 	}*/
@@ -63,6 +63,6 @@ public class UserDAOTest {
 	/*@Test
 	public void getUserTest() {
 		
-		assertEquals("Record retrieved successfully",true,userDao.getUser("shailendra@niit.com"));
+		assertEquals("Problem in retrieving record",true,userDao.getUser("shailendra@niit.com"));
 	}*/
 }

@@ -33,7 +33,7 @@ public class ForumDAOTest {
 		forum.setUserName("shailendra91");
 		forum.setForumContent("Code forum");
 		forum.setCreatedDate(textFormat.parse("2017-06-18"));
-		assertEquals("Successfully added forum into the table", true, forumDao.addForum(forum));
+		assertEquals("Problem in adding forum into the table", true, forumDao.addForum(forum));
 		
 		System.out.println("<-----------Successfully added into forum-------->");
 	}*/
@@ -45,7 +45,7 @@ public class ForumDAOTest {
 		forum.setForumName("Forum-Demo");
 		forum.setUserName("shailendra91");
 		forum.setForumContent("This is forum content");
-		assertEquals("Successfully updated status of forum", true, forumDao.updateForum(forum));
+		assertEquals("Problem in updating status of forum", true, forumDao.updateForum(forum));
 		
 		System.out.println("<-----------Successfully updated into forum-------->");
 	}*/
@@ -54,7 +54,7 @@ public class ForumDAOTest {
 	public void deleteForumTest() {
 		
 		forum.setForumId(5);
-		assertEquals("Successfully deleted forum", true, forumDao.deleteForum(forum));
+		assertEquals("Problem in deleting forum", true, forumDao.deleteForum(forum));
 		
 		System.out.println("<-----------Successfully deleted forum-------->");
 	}*/
