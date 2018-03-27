@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.niit.dao.BlogDAO;
 import com.niit.model.Blog;
+import com.niit.model.BlogComment;
 
 @Repository
 public class BlogDAOImpl implements BlogDAO{
@@ -104,7 +105,7 @@ public class BlogDAOImpl implements BlogDAO{
 	}
 	
 	@Override
-	public List<Blog> lisBlog(String userName){
+	public List<Blog> listBlog(String userName){
 		
 		try {
 			Session session = sessionFactory.openSession();
@@ -117,4 +118,64 @@ public class BlogDAOImpl implements BlogDAO{
 			return null;
 		}
 	}
+
+	@Override
+	public boolean incrementLike(Blog blog) {
+		
+		try {
+			
+			int likes = blog.getLikes();
+			likes++;
+			blog.setLikes(likes);
+			sessionFactory.getCurrentSession().update(blog);
+			return true;
+		}catch(Exception ex) {
+			
+			return false;
+		}
+	}
+
+	@Transactional
+	@Override
+	public boolean addBlogComment(BlogComment blogComment) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(blogComment);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Transactional
+	@Override
+	public boolean deleteBlogComment(BlogComment blogComment) {
+		try {
+			sessionFactory.getCurrentSession().delete(blogComment);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public BlogComment getBlogComment(int commentId) {
+		try {
+			Session session = sessionFactory.openSession();
+			BlogComment blogComment = session.get(BlogComment.class,commentId);
+			return blogComment;
+		} catch (Exception e) {
+			return null;
+		} 
+	}
+
+	@Override
+	public List<BlogComment> listBlogComments(int blogid) {
+		Session session=sessionFactory.openSession();
+		Query query=session.createQuery("from BlogComment where blogId=:blogId");
+		query.setParameter("blogId", new Integer(blogid));
+		@SuppressWarnings("unchecked")
+		List<BlogComment> listBlogComments=query.list();
+		return listBlogComments;
+	}
+	
 }

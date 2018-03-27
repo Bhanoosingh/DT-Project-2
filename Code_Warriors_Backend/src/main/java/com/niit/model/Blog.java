@@ -6,16 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="Blog")
+@SequenceGenerator(name="blogidseq", sequenceName="blog_id_seq")
 public class Blog {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="blogidseq")
 	int blogId;
 	
 	String blogName;

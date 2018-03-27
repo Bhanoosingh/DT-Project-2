@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.niit.dao.ForumDAO;
 import com.niit.model.Blog;
 import com.niit.model.Forum;
+import com.niit.model.ForumComment;
 
 @Repository
 public class ForumDAOImpl implements ForumDAO {
@@ -70,7 +71,7 @@ public class ForumDAOImpl implements ForumDAO {
 	}
 
 	@Override
-	public List<Forum> lisForum(String userName) {
+	public List<Forum> listForum(String userName) {
 		
 		try {
 			Session session = sessionFactory.openSession();
@@ -82,6 +83,77 @@ public class ForumDAOImpl implements ForumDAO {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@Transactional
+	@Override
+	public boolean approveForum(Forum forum) {
+		
+		try {
+			
+			forum.setStatus("A");
+			sessionFactory.getCurrentSession().update(forum);
+			return true;
+		}catch(Exception exception) {
+			return false;
+		}
+	}
+
+	@Transactional
+	@Override
+	public boolean rejectForum(Forum forum) {
+
+		try {
+			
+			forum.setStatus("A");
+			sessionFactory.getCurrentSession().update(forum);
+			return true;
+		}catch(Exception exception) {
+			return false;
+		}
+	}
+
+	@Transactional
+	@Override
+	public boolean addForumDiscussion(ForumComment forumComment) {
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(forumComment);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Transactional
+	@Override
+	public boolean deleteForumDiscussion(ForumComment forumComment) {
+		try {
+			sessionFactory.getCurrentSession().delete(forumComment);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public ForumComment getForumDiscussion(int discussionId) {
+		try {
+			Session session = sessionFactory.openSession();
+			ForumComment forumComment = session.get(ForumComment.class, discussionId);
+			return forumComment;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<ForumComment> listForumDiscussion(int forumid) {
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from ForumComment where forumId=:forumId");
+		query.setParameter("forumId", new Integer(forumid));
+		@SuppressWarnings("unchecked")
+		List<ForumComment> listForumComments = query.list();
+		return listForumComments;
 	}
 
 }

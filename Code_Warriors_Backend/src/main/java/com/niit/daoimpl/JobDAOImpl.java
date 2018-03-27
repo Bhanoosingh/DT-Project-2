@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.dao.JobDAO;
+import com.niit.model.ApplyJob;
 import com.niit.model.Job;
 
 @Repository
@@ -57,8 +58,48 @@ public class JobDAOImpl implements JobDAO {
 	}
 
 	@Override
-	public Job getJob(int jobId) {
+	public List<ApplyJob> getAllAppliedJobDetails() {
+
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			List<ApplyJob> appliedjobList = new ArrayList<ApplyJob>();
+			Query query = session.createQuery("FROM ApplyJob");
+			appliedjobList = query.list();
+			return appliedjobList;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<Job> listAllJobs() {
 		
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			List<Job> jobList = new ArrayList<Job>();
+			Query query = session.createQuery("FROM Job");
+			jobList = query.list();
+			return jobList;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Transactional
+	@Override
+	public boolean applyJob(ApplyJob job) {
+		try {
+			sessionFactory.getCurrentSession().save(job);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public Job getJob(int jobId) {
 		try {
 			Session session = sessionFactory.openSession();
 			Job job = session.get(Job.class, jobId);
@@ -66,27 +107,6 @@ public class JobDAOImpl implements JobDAO {
 		} catch (Exception e) {
 			return null;
 		}
-	}
-
-	@Override
-	public List<Job> lisJob(int jobId) {
-		
-		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			List<Job> jobList = new ArrayList<Job>();
-			Query query = session.createQuery("FROM Job where jobId=:jobId").setInteger("jobId",jobId);
-			jobList = query.list();
-			return jobList;
-		} catch (Exception e) {
-			return null;
-}
-	}
-
-	@Override
-	public boolean applyJob(Job job) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.niit.dao;
 import java.util.List;
 
 import com.niit.model.Forum;
+import com.niit.model.ForumComment;
 
 public interface ForumDAO {
 
@@ -10,5 +11,12 @@ public interface ForumDAO {
 	public boolean deleteForum(Forum forum);
 	public boolean updateForum(Forum forum);
 	public Forum getForum(int forumId);
-	public List<Forum> lisForum(String userName);
+	public List<Forum> listForum(String userName);
+	public boolean approveForum(Forum forum);
+	public boolean rejectForum(Forum forum);
+    
+    public boolean addForumDiscussion(ForumComment forumComment);
+    public boolean deleteForumDiscussion(ForumComment forumComment);
+    public ForumComment getForumDiscussion(int discussionId);
+    public List<ForumComment> listForumDiscussion(int forumid);
 }

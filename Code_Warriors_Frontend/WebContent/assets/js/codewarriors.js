@@ -6,13 +6,16 @@ var app = angular.module("myApp", ["ngRoute"]);
 				        templateUrl : "index.html"
 				    })
 				    .when("/blog", {
-				        templateUrl : "blog.html"
+				        templateUrl : "c_blog/blog.html"
 				    })
 				    .when("/job", {
-				        templateUrl : "job.html"
+				        templateUrl : "c_blog/job.html"
 				    })
 				    .when("/forum", {
-				        templateUrl : "forum.html"
+				        templateUrl : "c_blog/forum.html"
+				    })
+				    .when("/user", {
+				        templateUrl : "c_blog/user.html"
 				    })
 				    .when("/login", {
 				        templateUrl : "login.html"

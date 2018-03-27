@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class BlogDAOTest {
 		blogDao = (BlogDAO) context.getBean("blogDAO");
 	} 
 	
-	@Test
+/*	@Test
 	public void addBlogTest() throws ParseException {
 		SimpleDateFormat textFormat = new SimpleDateFormat("dd-MM-yyyy");
 		blog.setBlogName("Hibernate");
@@ -38,7 +39,7 @@ public class BlogDAOTest {
 		assertEquals("Problem in inserting blog table", true, blogDao.addBlog(blog));
 		
 		System.out.println("<-----------Successfully added into blog-------->");
-	}
+	}*/
 
 	/*@Test
 	public void updateBlogTest() {
@@ -58,5 +59,19 @@ public class BlogDAOTest {
 		
 		System.out.println("<-----------Successfully deleted blog-------->");
 	}*/
+	
+	@Test
+	public void listBlogTest() {
+		
+		List<Blog> list = blogDao.listBlog("shailendra91");
+		assertTrue("Problem in listing blog",list.size()>0);
+		for(Blog b:list) {
+			
+			System.out.print(b.getBlogId()+"::");
+			System.out.print(b.getBlogName()+"::");
+			System.out.print(b.getBlogContent()+"::");
+			System.out.print(b.getUserName()+"::");
+		}
+	}
 
 }

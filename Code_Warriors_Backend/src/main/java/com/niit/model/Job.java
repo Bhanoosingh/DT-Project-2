@@ -10,52 +10,57 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-public class Job {
-
-	@Id
-	@GeneratedValue
-	private int jobId;
-	
-	private String jobTitle;
-	private String jobDescription;
-	private Date postedDate;
-	private String salary;
-	private String desgination;
+public class Job 
+{
+    @Id
+    int jobId;
+    
+    String jobDesignation;
+    String company;
+    int salary;
+    String location;
+    String jobDesc;
+    Date lastDateApply;
 	public int getJobId() {
 		return jobId;
 	}
 	public void setJobId(int jobId) {
 		this.jobId = jobId;
 	}
-	public String getJobTitle() {
-		return jobTitle;
+	public String getJobDesignation() {
+		return jobDesignation;
 	}
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
+	public void setJobDesignation(String jobDesignation) {
+		this.jobDesignation = jobDesignation;
 	}
-	public String getJobDescription() {
-		return jobDescription;
+	public String getCompany() {
+		return company;
 	}
-	public void setJobDescription(String jobDescription) {
-		this.jobDescription = jobDescription;
+	public void setCompany(String company) {
+		this.company = company;
 	}
-	public Date getPostedDate() {
-		return postedDate;
-	}
-	public void setPostedDate(Date postedDate) {
-		this.postedDate = postedDate;
-	}
-	public String getSalary() {
+	public int getSalary() {
 		return salary;
 	}
-	public void setSalary(String salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	public String getDesgination() {
-		return desgination;
+	public String getLocation() {
+		return location;
 	}
-	public void setDesgination(String desgination) {
-		this.desgination = desgination;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	
+	public String getJobDesc() {
+		return jobDesc;
+	}
+	public void setJobDesc(String jobDesc) {
+		this.jobDesc = jobDesc;
+	}
+	public Date getLastDateApply() {
+		return lastDateApply;
+	}
+	public void setLastDateApply(Date lastDateApply) {
+		this.lastDateApply = lastDateApply;
+	}	
 }
