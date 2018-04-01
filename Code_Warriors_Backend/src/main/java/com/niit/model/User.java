@@ -15,7 +15,21 @@ public class User {
 	private String email;
 	private String address;
 	private String phone;
+	private String isOnline;
+	private String role;
 
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getIsOnline() {
+		return isOnline;
+	}
+	public void setIsOnline(String isOnline) {
+		this.isOnline = isOnline;
+	}
 	public String getName() {
 		return name;
 	}

@@ -1,9 +1,13 @@
 package com.niit.daoimpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -61,6 +65,51 @@ public class UserDAOImpl implements UserDAO {
 			User user = session.get(User.class, userId);
 			return user;
 		}catch(Exception exception) {
+			return null;
+		}
+	}
+
+	@Override
+	public boolean checkLogin(User user) {
+		try{
+			Session session=sessionFactory.openSession();
+			Query query=session.createQuery("from UserDetail where loginname=:loginname and password=:password");
+			query.setParameter("loginname",user.getName());
+			query.setParameter("password",user.getPassword());
+			User userDetails=(User)query.list().get(0);
+			session.close();
+			if(userDetails==null){
+				return false;
+			}else
+			{
+			 return true;
+			}
+		}catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateOnlineStatus(String status, User user) {
+		try {
+			user.setIsOnline(status);
+			sessionFactory.getCurrentSession().update(user);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public List<User> listUsers() {
+		try {
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			List<User> userList = new ArrayList<User>();
+			Query query = session.createQuery("FROM User");
+			userList = query.list();
+			return userList;
+		} catch (Exception e) {
 			return null;
 		}
 	}

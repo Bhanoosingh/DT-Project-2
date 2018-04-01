@@ -10,4 +10,15 @@ myApp.controller("BlogController",function($scope,$http,$location)
 					console.log("status",response.statusText);
 				});
 			};
+			
+			function fetchAllBlog()
+			{
+				console.log('Fetch All Blogs');
+				$http.get("http://localhost:8083/SChatMiddleware/listBlogs")
+				.then(function(response)
+				{
+					$scope.blogData=response.data;
+				})
+			}
+			fetchAllBlog();
 		});
