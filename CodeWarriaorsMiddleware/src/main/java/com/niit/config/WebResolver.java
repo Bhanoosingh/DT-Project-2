@@ -22,4 +22,16 @@ public class WebResolver
 		iRVResolver.setSuffix(".jsp");
 		return iRVResolver;
 	}
+	
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+
+	}
+
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver getMultipartResolver() {
+		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+		commonsMultipartResolver.setMaxUploadSize(1000000000);
+		return commonsMultipartResolver;
+}
 }

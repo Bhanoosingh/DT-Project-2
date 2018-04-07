@@ -42,7 +42,7 @@ public class BlogController {
 	
 	@PostMapping(value="/addBlog")
 	public ResponseEntity<String> addBlog(@RequestBody Blog blog){
-		
+		System.out.println("Adding Blog");
 		blog.setCreateDate(new java.util.Date());
 		blog.setLikes(0);
 		blog.setUserName("thakur91");

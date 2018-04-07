@@ -14,7 +14,7 @@ myApp.controller("BlogController",function($scope,$http,$location)
 			function fetchAllBlog()
 			{
 				console.log('Fetch All Blogs');
-				$http.get("http://localhost:8083/SChatMiddleware/listBlogs")
+				$http.get("http://localhost:8085/CodeWarriaorsMiddleware/listBlogs")
 				.then(function(response)
 				{
 					$scope.blogData=response.data;
