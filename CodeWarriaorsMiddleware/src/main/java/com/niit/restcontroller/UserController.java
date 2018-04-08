@@ -26,9 +26,10 @@ public class UserController {
 	@PostMapping(value="/login")
 	public ResponseEntity<User> checkLogin(@RequestBody User userDetail)
 	{
+		System.out.println("Inside user login");
 		if(userDAO.checkLogin(userDetail))
 		{
-			User tempUser=(User)userDAO.getUser(userDetail.getName());
+			User tempUser=(User)userDAO.getUser(userDetail.getEmail());
 			userDAO.updateOnlineStatus("Y", tempUser);
 			return new ResponseEntity<User>(tempUser,HttpStatus.OK);
 		}
@@ -42,6 +43,8 @@ public class UserController {
 	@PostMapping(value = "/registerUser")
 	public ResponseEntity<String> registerUser(@RequestBody User user) {
 		
+		System.out.println("Inside user registration");
+		user.setIsOnline("Not");
 		user.setRole("USER");
 		if (userDAO.addUser(user)) {
 			return new ResponseEntity<String>("User Registered Successfully", HttpStatus.OK);

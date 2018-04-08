@@ -73,8 +73,8 @@ public class UserDAOImpl implements UserDAO {
 	public boolean checkLogin(User user) {
 		try{
 			Session session=sessionFactory.openSession();
-			Query query=session.createQuery("from UserDetail where loginname=:loginname and password=:password");
-			query.setParameter("loginname",user.getName());
+			Query query=session.createQuery("from UserRecord where email=:email and password=:password");
+			query.setParameter("email",user.getEmail());
 			query.setParameter("password",user.getPassword());
 			User userDetails=(User)query.list().get(0);
 			session.close();

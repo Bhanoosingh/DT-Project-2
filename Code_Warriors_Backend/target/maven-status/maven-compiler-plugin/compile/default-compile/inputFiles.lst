@@ -2,6 +2,7 @@ D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\dao\JobDAO.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\controller\DatabaseConfig.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\model\Blog.java
+D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\model\ForumComment.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\daoimpl\ForumDAOImpl.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\daoimpl\BlogDAOImpl.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\dao\UserDAO.java
@@ -10,4 +11,6 @@ D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\model\Forum.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\daoimpl\JobDAOImpl.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\daoimpl\UserDAOImpl.java
+D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\model\ApplyJob.java
 D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\model\User.java
+D:\Workstation\GitHub\DT-Project-2\Code_Warriors_Backend\src\main\java\com\niit\model\BlogComment.java

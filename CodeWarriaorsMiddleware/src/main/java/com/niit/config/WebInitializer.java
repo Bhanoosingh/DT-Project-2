@@ -23,7 +23,8 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getRootConfigClasses() 
 	{
-		return new Class[]{WebResolver.class,DatabaseConfig.class};
+		System.out.println("Getting Resolver");
+		return new Class[]{WebResolver.class};
 	}
 
 	@Override

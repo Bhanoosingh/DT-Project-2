@@ -6,19 +6,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.niit")
-public class WebResolver 
+public class WebResolver extends WebMvcConfigurerAdapter 
 {
 	@Bean
 	public InternalResourceViewResolver getViewResolver()
 	{
 		System.out.println("Resolver Called");
 		InternalResourceViewResolver iRVResolver=new InternalResourceViewResolver();
-		iRVResolver.setPrefix("/WEB-INF/jsp");
+		iRVResolver.setPrefix("/WEB-INF/views");
 		iRVResolver.setSuffix(".jsp");
 		return iRVResolver;
 	}
@@ -33,5 +34,5 @@ public class WebResolver
 		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
 		commonsMultipartResolver.setMaxUploadSize(1000000000);
 		return commonsMultipartResolver;
-}
+	}
 }
