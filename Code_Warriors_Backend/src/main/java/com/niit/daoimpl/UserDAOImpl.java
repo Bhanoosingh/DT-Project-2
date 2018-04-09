@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.dao.UserDAO;
-import com.niit.model.Blog;
 import com.niit.model.User;
 
 @Repository

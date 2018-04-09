@@ -31,7 +31,7 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 				if($rootScope.currentUser.role=='User'){
 					console.log("User");
 				}
-				$location.path("home");
+				$location.path("/");
 			});
 		};
 		
@@ -45,6 +45,6 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 		console.log('LogOut function');
 		delete $rootScope.currentUser;
 		$cookieStore.remove('userrecord');
-		$location.path("logout");
+		$location.path("/");
 	}	
 });

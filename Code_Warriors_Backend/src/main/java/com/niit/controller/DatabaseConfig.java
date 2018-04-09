@@ -17,14 +17,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.dao.BlogDAO;
 import com.niit.dao.ForumDAO;
 import com.niit.dao.JobDAO;
+import com.niit.dao.ProfilePicDAO;
 import com.niit.dao.UserDAO;
 import com.niit.daoimpl.BlogDAOImpl;
 import com.niit.daoimpl.ForumDAOImpl;
 import com.niit.daoimpl.JobDAOImpl;
+import com.niit.daoimpl.ProfilePicDAOImpl;
 import com.niit.daoimpl.UserDAOImpl;
 import com.niit.model.Blog;
+import com.niit.model.BlogComment;
 import com.niit.model.Forum;
+import com.niit.model.ForumComment;
 import com.niit.model.Job;
+import com.niit.model.ProfilePicture;
 import com.niit.model.User;
 
 @Configuration
@@ -69,6 +74,9 @@ public class DatabaseConfig {
 		localSessionFactoryBuider.addAnnotatedClass(Forum.class);
 		localSessionFactoryBuider.addAnnotatedClass(Job.class);
 		localSessionFactoryBuider.addAnnotatedClass(User.class);
+		localSessionFactoryBuider.addAnnotatedClass(BlogComment.class);
+		localSessionFactoryBuider.addAnnotatedClass(ForumComment.class);
+		localSessionFactoryBuider.addAnnotatedClass(ProfilePicture.class);
 		System.out.println("=== Tables Created ===");
 		SessionFactory sessionFectory = localSessionFactoryBuider.buildSessionFactory(); 
 		
@@ -100,6 +108,10 @@ public class DatabaseConfig {
 		return new UserDAOImpl();
 	}
 	
+	@Bean(name = "profileDAO")
+	public ProfilePicDAO getProfilePictureDAO() {
+		return new ProfilePicDAOImpl();
+	}
 	@Bean
 	public HibernateTransactionManager getHibernateTransactionManager(SessionFactory sessionFactory) {
 		

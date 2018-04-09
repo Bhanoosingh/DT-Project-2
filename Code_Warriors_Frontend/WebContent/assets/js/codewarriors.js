@@ -40,10 +40,10 @@ myApp.config(function($routeProvider)
 		templateUrl:"blog/AddBlog.html"
 	})
 	.when("/displayProfile",{
-		templateUrl:"user/UploadProfilePicture.html"
+		templateUrl:"c_user/UploadProfilePicture.html"
 	})
 	.when("/uploadProfilePicture",{
-		templateUrl:"user/UploadProfilePicture.html"
+		templateUrl:"c_user/updateProfilePic.html"
 	})
 
 });

@@ -2,6 +2,8 @@ package com.niit.restcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +26,14 @@ public class UserController {
 
 	//------------------CheckLogin-----------------
 	@PostMapping(value="/login")
-	public ResponseEntity<User> checkLogin(@RequestBody User userDetail)
+	public ResponseEntity<User> checkLogin(@RequestBody User userDetail, HttpSession session)
 	{
 		System.out.println("Inside user login");
 		if(userDAO.checkLogin(userDetail))
 		{
 			User tempUser=(User)userDAO.getUser(userDetail.getEmail());
 			userDAO.updateOnlineStatus("Y", tempUser);
+			session.setAttribute("userRecord", tempUser);
 			return new ResponseEntity<User>(tempUser,HttpStatus.OK);
 		}
 		else

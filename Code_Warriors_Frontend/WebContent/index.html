@@ -4,7 +4,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="ISO-8859-1">
 	<title>codeWarriors</title>
-	
+	<style>
+		li:hover{color:#bc21e0; font-size:16px;  border-radius:10px;border-right:none; border-left:none; border-top:solid 2px; box-shadow: 0px 0px 9px -1px #555;}
+		ul li{color:#3f064c; font-size:18px;}
+		ul li:hover{box-shadow: 0px 0px 9px -1px #555;font-size:22px;cursor: pointer; color:#bc21e0;}
+	</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,7 +24,7 @@
 	
 	</head>
 	<body ng-app="myApp">
-	<nav class="navbar navbar-inverse" style="background-color:#f44277">
+	<nav class="navbar navbar-inverse" style="background-color:#fff; border-top:none; border-radius:0px; border-right:none; border-left:none;">
 		<div class="container-fluid">
 			<div class="navbar-header" style="height:12%">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -28,32 +32,32 @@
         			<span class="icon-bar"></span>
         			<span class="icon-bar"></span> 
       			</button>
-				<a class="navbar-brand" href="#!"><img src="assets/images/cw.png" style="height:80px;width:120px; margin-top: -5px;"/></a>
+				<a class="navbar-brand" href="#!"><img src="assets/images/codewarrior.jpg" style="height:70px;width:120px;position: relative;top: -14px;"/></a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
-    			<ul class="nav navbar-nav" style="margin-top:20px;font-size:20px;font-weight:bold;">
-					<li><a href="#!" style="color:white">Home</a></li>
-					<li ng-hide="currentUser.role=='USER'||currentUser.role=='Role_Admin'"><a href="#!blog" style="color:white">Blog</a></li>
-					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!forum" style="color:white">Forum</a></li>
-					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!job" style="color:white">Job</a></li>
-					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!about" style="color:white">About Us</a></li>
-					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!contact" style="color:white">Contact Us</a></li>
+    			<ul class="nav navbar-nav" style="padding-top:15px; padding-bottom:10px; font-size:20px;font-weight:normal;">
+					<li><a href="#!" style="color:#a120bf">Home</a></li>
+					<li ng-hide="currentUser.role=='USER'||currentUser.role=='Role_Admin'"><a href="#!blog" style="color:#a120bf">Blog</a></li>
+					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!forum" style="color:#a120bf">Forum</a></li>
+					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!job" style="color:#a120bf">Job</a></li>
+					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!about" style="color:#a120bf">About Us</a></li>
+					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!contact" style="color:#a120bf">Contact Us</a></li>
 					<!-- <li ng-show="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!uploadProfilePicture" style="color:white">Upload Profile Picture</a></li> -->
 					
 					
 					
 					<li ng-hide="currentUser.role=='USER'||currentUser.role=='Admin'">
-						<a href="#!login" style="color:white">
-							<span class="glyphicon glyphicon-log-in"></span>Login
+						<a href="#!login" style="color:#a120bf">
+							<span class="glyphicon glyphicon-log-in"></span> Login
 						</a>
 					</li>
 					<li ng-hide="currentUser.role=='USER'||currentUser.role=='Admin'">
-						<a href="#!register" style="color:white">
-							<span class="glyphicon glyphicon-user"></span>Register
+						<a href="#!register" style="color:#a120bf">
+							<span class="glyphicon glyphicon-user"></span> Register
 							</a>
 					</li>
 					<li ng-show="currentUser.role=='USER'" class="dropdown" style="padding-right:20px;padding-left:10px ">
-						<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;padding-top:10px">Blog
+						<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#a120bf;padding-top:10px">Blog
         				<span class="caret"></span></p>
         				<ul class="dropdown-menu">
           					<li><a href="#!addBlog">Add Blog</a></li>
@@ -61,7 +65,7 @@
           				</ul>
       				</li>
       				<li ng-show="currentUser.role=='USER'" class="dropdown">
-						<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;padding-top:10px">Profile
+						<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#a120bf;padding-top:10px">Profile
         				<span class="caret"></span></p>
         				<ul class="dropdown-menu">
         				
@@ -71,31 +75,32 @@
           				</ul>
       				</li>
 				</ul>
-				<ul class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined" style="padding-top:20px">
-					<li style="color:white;padding-right:20px;font-size:20px">Welcome {{currentUser.name}}</li>
-					<li>
+				<span class="nav navbar-nav navbar-right dropdown" ng-hide="currentUser==undefined" style="padding-top:20px">
+				<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#e0214d	;padding-top:10px; font-size:16px;">Welcome {{currentUser.name}}
+        				<span class="caret"></span></p>
+					<ul class="dropdown-menu" ng-controller="UserController">
+        				
+          					<li><a href="#" ng-click="logout()">Log Out</a></li>
+          					<li><a href="#!uploadProfilePicture">Upload Profile Picture</a></li>
+          			</ul>
+					</span>			
 					
-					
-					<!-- <img id="img1"  
-					src="http://localhost:4522/CollaborationProjectMiddleWare/viewProfilePicture/{{currentUser.loginName}}"
+					<!-- <img id="img1" ng-hide="currentUser==undefined"  
+					src="http://localhost:8085/CodeWarriaorsMiddleware/getImage/{{currentUser.email}}"
 					onerror="if (this.src != 'images/profilepicture.png') this.src = 'images/profilepicture.png';"
 					style="height:80px;width:100px" onshow="checkSRC"></li>  -->
-								
-					<li><form ng-controller="UserController"><input type="submit" value="LogOut" ng-click="logout()"></form></li>
-				</ul>
+									
 			</div>
 		</div>
 	</nav>
 	
 	<br/>
 	<!-- Content -->
-	<div ng-view></div>
+	<div style="min-height: 550px;" ng-view></div>
 	
-	
-	<br/><br/><br/><br/><br/><br/>
 	<!-- Footer -->
-	<footer>
-		<div class="container-fluid" style="background-color:#f44277;height:40px;color:white;text-align:center;padding:10" >
+	<footer >
+		<div class="container-fluid" style="background-color:#09496d;height:40px;color:white;text-align:center;padding:10px; position:fixed;bottom:0px; width:100%;" >
 			&copy; 2018 Copyright:codeWarriors.com	 
 		</div>
 	</footer>
