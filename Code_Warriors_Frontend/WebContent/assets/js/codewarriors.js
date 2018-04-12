@@ -21,6 +21,12 @@ myApp.config(function($routeProvider)
 	.when("/blog",{
 		templateUrl:"c_blog/blog.html"
 	})
+	.when("/addBlog",{
+		templateUrl:"c_blog/addBlog.html"
+	})
+	.when("/updateBlog",{
+		templateUrl:"c_blog/updateBlog.html"
+	})
 	.when("/forum",{
 		templateUrl:"c_forum/forum.html",
 	})
@@ -35,9 +41,6 @@ myApp.config(function($routeProvider)
 	})
 	.when("/about",{
 		templateUrl:"aboutus.html"
-	})
-	.when("/addBlog",{
-		templateUrl:"blog/AddBlog.html"
 	})
 	.when("/displayProfile",{
 		templateUrl:"c_user/UploadProfilePicture.html"

@@ -1,10 +1,11 @@
 package com.niit.daoimpl;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.dao.ProfilePicDAO;
 import com.niit.model.ProfilePicture;
@@ -21,7 +22,6 @@ public class ProfilePicDAOImpl implements ProfilePicDAO{
 		System.out.println("Profile Loginname : "+profilePicture.getLoginname());
 		Session session=sessionFactory.openSession();
 		session.save(profilePicture);
-		session.flush();
 		session.close();
 	}
 	

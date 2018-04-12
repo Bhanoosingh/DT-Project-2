@@ -22,10 +22,9 @@ myApp.controller("BlogController",function($scope,$http,$location)
 				})
 			}
 			$scope.editBlog = function(blogId) {
-				alert("In edit method");
 				$http.get('http://localhost:8085/CodeWarriaorsMiddleware/getBlog/' + blogId)
-						.then(fetchAllBlogs(), function(response) {
-							console.log('In edit blog');
+						.then(function(response) {
+							console.log(response.status);
 							$scope.blog = response.data;
 							$location.path('/updateBlog');
 							console.log('Status Text' + response.statusText);
