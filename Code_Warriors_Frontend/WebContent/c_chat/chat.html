@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>SChAt</title>
 <style>
 body {
 	margin: 0;
@@ -31,10 +30,10 @@ body {
 						<label align="center">Message <input type="text"
 							class="form-control" placeholder="Enter message here"
 							ng-model="message"></label> Maximum Text length <span classs="count"
-							ng-bind="max - message.length"> 140 </span>
+							ng-bind="max - message.length"> 250 </span>
 
 						<button class="btn btn-primary"
-							ng-disabled="message.length>140||message.length==0">Send</button>
+							ng-disabled="message.length>250||message.length==0">Send</button>
 
 					</div>
 				</div>
@@ -43,11 +42,11 @@ body {
 
 
 		<div class="jumbotron">
-			<p ng-repeat="message in messages" color="lightblue">
+			<p ng-repeat="msg in messages" color="lightblue">
 				<span> <img
-					src="http://localhost:8083/SChatMiddleWare/getImage/{{currentUser.loginname}}"
-					width="20" height=20 " onerror=this.src= "avatar.png"/> <font
-					color="blue" face="Comic Sans MS"> {{message.message}} </font>
+					src="http://localhost:8085/CodeWarriaorsMiddleware/getImage/{{currentUser.email}}"
+					width="20" height="20" onerror=this.src= "assets/images/user.png"/> <font
+					color="blue" face="Comic Sans MS"> {{msg.message}} </font>
 				</span>
 			</p>
 		</div>

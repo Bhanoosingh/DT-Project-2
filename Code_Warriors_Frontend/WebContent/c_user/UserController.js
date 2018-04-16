@@ -11,6 +11,7 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 			.then(function(response)
 				{
 				console.log('Status text:' + response.statusText);
+				alert('Registered successfully..!!');
 				});
 		};
 	

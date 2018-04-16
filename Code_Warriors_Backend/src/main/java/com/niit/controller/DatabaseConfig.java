@@ -24,11 +24,14 @@ import com.niit.daoimpl.ForumDAOImpl;
 import com.niit.daoimpl.JobDAOImpl;
 import com.niit.daoimpl.ProfilePicDAOImpl;
 import com.niit.daoimpl.UserDAOImpl;
+import com.niit.model.ApplyJob;
 import com.niit.model.Blog;
 import com.niit.model.BlogComment;
 import com.niit.model.Forum;
 import com.niit.model.ForumComment;
+import com.niit.model.Friend;
 import com.niit.model.Job;
+import com.niit.model.Message;
 import com.niit.model.ProfilePicture;
 import com.niit.model.User;
 
@@ -77,6 +80,9 @@ public class DatabaseConfig {
 		localSessionFactoryBuider.addAnnotatedClass(BlogComment.class);
 		localSessionFactoryBuider.addAnnotatedClass(ForumComment.class);
 		localSessionFactoryBuider.addAnnotatedClass(ProfilePicture.class);
+		localSessionFactoryBuider.addAnnotatedClass(Message.class);
+		localSessionFactoryBuider.addAnnotatedClass(Friend.class);
+		localSessionFactoryBuider.addAnnotatedClass(ApplyJob.class);
 		System.out.println("=== Tables Created ===");
 		SessionFactory sessionFectory = localSessionFactoryBuider.buildSessionFactory(); 
 		

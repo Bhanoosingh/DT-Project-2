@@ -16,6 +16,7 @@ import com.niit.model.OutputMessage;
         @SendTo("/topic/message")
         public OutputMessage sendMessage(Message message)
         {
+        	System.out.println("Message Recieved");
             return new OutputMessage(message,new Date());
         }
 }

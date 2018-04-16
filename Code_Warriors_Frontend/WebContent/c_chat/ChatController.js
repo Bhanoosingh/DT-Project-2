@@ -2,11 +2,11 @@ myApp.controller('ChatController', function($scope,$rootScope,chatService)
 {
 	$scope.messages=[];
 	$scope.message="";
-	$scope.max=140;
+	$scope.max=250;
 	
 	$scope.addMessage=function()
 	{
-		chatService.send($rootScope.currentUser.loginname+":" +$scope.message);
+		chatService.send($rootScope.currentUser.name+":" +$scope.message);
 		$scope.message="";
 	};
 

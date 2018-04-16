@@ -33,12 +33,6 @@ myApp.config(function($routeProvider)
 	.when("/job",{
 		templateUrl:"c_job/job.html"
 	})
-	.when("/UserHome",{
-		templateUrl:"user/UserHome.html"
-	})
-	.when("/logout",{
-		templateUrl:"user/LogOut.html"
-	})
 	.when("/about",{
 		templateUrl:"aboutus.html"
 	})
@@ -47,6 +41,9 @@ myApp.config(function($routeProvider)
 	})
 	.when("/uploadProfilePicture",{
 		templateUrl:"c_user/updateProfilePic.html"
+	})
+	.when("/chat",{
+		templateUrl:"c_chat/chat.html"
 	})
 
 });

@@ -20,6 +20,11 @@
 		<script src="assets/js/codewarriors.js"></script>
   		<script src="c_user/UserController.js"></script>
   		<script src="c_blog/BlogController.js"></script>
+  		<script src="c_chat/ChatController.js"></script>
+  		<script src="c_chat/ChatService.js"></script>
+  		<script src="assets/js/lodash.js"></script>
+  		<script src="assets/js/stomp.js"></script>
+  		<script src="assets/js/sockjs.js"></script>
   		<link rel="stylesheet" href="assets/css/cw-styles.css"/>
 	
 	</head>
@@ -42,7 +47,8 @@
 					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!about" style="color:#a120bf">About Us</a></li>
 					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!contact" style="color:#a120bf">Contact Us</a></li>
 					<!-- <li ng-show="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!uploadProfilePicture" style="color:white">Upload Profile Picture</a></li> -->
-					
+					<li	ng-show="currentUser.role=='USER'||currentUser.role=='ADMIN'"><a href="#!chat" style="color:#a120bf">Chat</a></li>
+</li>
 					
 					
 					<li ng-hide="currentUser.role=='USER'||currentUser.role=='Admin'">

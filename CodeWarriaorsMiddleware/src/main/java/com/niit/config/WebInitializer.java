@@ -24,7 +24,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected Class<?>[] getRootConfigClasses() 
 	{
 		System.out.println("Getting Resolver");
-		return new Class[]{WebResolver.class};
+		return new Class[]{WebResolver.class,DatabaseConfig.class};
 	}
 
 	@Override
@@ -38,6 +38,14 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected String[] getServletMappings() 
 	{
 		return  new String[] { "/" };
+	}
+	
+	@Override
+	protected Filter[] getServletFilters()
+	{
+		CharacterEncodingFilter encodingFilter=new CharacterEncodingFilter();
+		encodingFilter.setEncoding(StandardCharsets.UTF_8.name());
+		return new Filter[] {encodingFilter};
 	}
 
 }
