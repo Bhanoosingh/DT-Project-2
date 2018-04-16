@@ -10,30 +10,36 @@ body {
 	color: #222;
 	font-family: COTILLIO, sans-serif;
 	font-weight: 300;
+	background:url('assets/images/chat.jpg');
 }
 #chat-box {
 	position: relative;
-	margin: 5% auto;
+	margin: 0% auto;
 	width: 600px;
-	height: 400px;
+	height: 520px;
 	border-radius: 2px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	overflow:auto;
+	float:right;
+	bottom:0px;
+	background: rgba(165,60,158,0.6);
 }
+#btn{width:180px; background:rgba(134,41,173,0.8); border:none; box-shadow: 1px 3px 8px #000;text-shadow: 1px 3px 3px #000;font-size: 18px; margin-top:5px;}
+	#btn:hover{width:180px; background:rgba(134,41,173,0.8); border:none; box-shadow: 1px 3px 8px #000;}
 </style>
 </head>
 <body>
 	<div id="chat-box" ng-controller="ChatController">
 		<form ng-submit="addMessage()" name="chatMsg">
 			<div class="col-sm-12">
-				<div class="row">
+				<div class="row" style="background: #480b56; color:#fff;">
 					<div class="col-sm-9 form-group">
 						<label align="center">Message <input type="text"
-							class="form-control" placeholder="Enter message here"
-							ng-model="message"></label> Maximum Text length <span classs="count"
-							ng-bind="max - message.length"> 250 </span>
-
-						<button class="btn btn-primary"
-							ng-disabled="message.length>250||message.length==0">Send</button>
+							class="form-control" placeholder="Enter message here" style="width:550px;"
+							ng-model="message"></label> 
+						<button id="btn" class="btn btn-primary"
+							ng-disabled="message.length>250||message.length==0">Send</button><span style="float:right; margin-top:5px;">Maximum <span classs="count"
+							ng-bind="max - message.length"> 250 </span></span>
 
 					</div>
 				</div>
@@ -41,12 +47,12 @@ body {
 		</form>
 
 
-		<div class="jumbotron">
+		<div class="jumbotron" style="background:rgba(165,60,158,0.1);">
 			<p ng-repeat="msg in messages" color="lightblue">
 				<span> <img
 					src="http://localhost:8085/CodeWarriaorsMiddleware/getImage/{{currentUser.email}}"
-					width="20" height="20" onerror=this.src= "assets/images/user.png"/> <font
-					color="blue" face="Comic Sans MS"> {{msg.message}} </font>
+					width="20" height="20" onerror=this.src= "assets/images/user.png"/> <font style="text-shadow: 1px 3px 3px #000; color:#fff;"
+					 face="Verdana"> {{msg.message}} </font>
 				</span>
 			</p>
 		</div>
