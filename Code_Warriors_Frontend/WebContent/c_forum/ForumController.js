@@ -1,13 +1,13 @@
 myApp.controller("ForumController", function($scope, $http, $location,$rootScope, $window) {
-	$scope.forum = {"forumId":0,"forumName" : '',"forumContent" : '',"createdDate" : '',"loginname" : '',"status" : ''}
-	$rootScope.forum1 = {"forumId":0,"forumName" : '',"forumContent" : '',"createdDate" : '',"loginname" : '',"status" : ''}
+	$scope.forum = {"forumId":0,"forumName" : '',"forumContent" : '',"createdDate" : '',"userName" : '',"status" : ''}
+	$rootScope.forum1 = {"forumId":0,"forumName" : '',"forumContent" : '',"createdDate" : '',"userName" : '',"status" : ''}
 	$scope.forumData;
 
 	$scope.insertForum = function() {
 		console.log('Entered into the insertForum method');
-		$scope.forum.loginname=$rootScope.currentUser.loginname;
-		$http.post("http://localhost:8085/CodeWarriaorsMiddleware/addForum",
-						$scope.forum).then(fetchAllForums(), function(response) {
+		$scope.forum.userName=$rootScope.currentUser.name;
+		$http.post("http://localhost:8085/CodeWarriaorsMiddleware/addForum",$scope.forum)
+				.then(fetchAllForums(), function(response) {
 						$scope.forumData=response.Data;
 						console.log('Status text:' + response.statusText);
 						 $window.alert("Data inserted successfully");

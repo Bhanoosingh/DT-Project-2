@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.dao.FriendDAO;
 import com.niit.model.Friend;
+import com.niit.model.User;
 
 @RestController
 public class FriendController {
@@ -60,7 +61,7 @@ public class FriendController {
 	public ResponseEntity<List<Friend>> showAllFriends(HttpSession session)
 	{
 		//String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
-		List<Friend> listAllFriends=friendDAO.showAllFriends("Shubham");
+		List<Friend> listAllFriends=friendDAO.showAllFriends("Shailendra");
 		if(listAllFriends.size()>0)
 		{
 			return new 	ResponseEntity<List<Friend>>(listAllFriends,HttpStatus.OK);	
@@ -74,7 +75,7 @@ public class FriendController {
 	public ResponseEntity<List<Friend>> showPendingFriendRequests(HttpSession session)
 	{
 		//String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
-		List<Friend> listPendingRequests=friendDAO.showRequestPendingList("Shubham");
+		List<Friend> listPendingRequests=friendDAO.showRequestPendingList("Shailendra");
 		if(listPendingRequests.size()>0)
 		{
 			return new 	ResponseEntity<List<Friend>>(listPendingRequests,HttpStatus.OK);	
@@ -82,6 +83,20 @@ public class FriendController {
 		else
 		{
 			return new ResponseEntity<List<Friend>>(listPendingRequests,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	@GetMapping(value="/showSuggestedFriends")
+	public ResponseEntity<List<User>> showSuggestedFriends(HttpSession session)
+	{
+		String loginname=((User)session.getAttribute(("userrecord"))).getEmail();
+		List<User> listSuggestedFriend = friendDAO.showSuggestedFriend(loginname);
+		if(listSuggestedFriend.size()>0)
+		{
+			return new 	ResponseEntity<List<User>>(listSuggestedFriend,HttpStatus.OK);	
+		}
+		else
+		{
+			return new ResponseEntity<List<User>>(listSuggestedFriend,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 }

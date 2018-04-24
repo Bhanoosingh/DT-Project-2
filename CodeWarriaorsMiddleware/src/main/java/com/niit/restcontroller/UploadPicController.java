@@ -46,8 +46,8 @@ public class UploadPicController {
 		}
 	}
 	
-	@RequestMapping(value="/getImage/{loginname}")
-	public @ResponseBody byte[] getProfilePic(@PathVariable("loginame") String loginname)
+	@RequestMapping(value="/getImage/{email}")
+	public @ResponseBody byte[] getProfilePic(@PathVariable("email") String loginname)
 	{
 		
 		ProfilePicture profilePicture=profileDAO.getProfilePicture(loginname);

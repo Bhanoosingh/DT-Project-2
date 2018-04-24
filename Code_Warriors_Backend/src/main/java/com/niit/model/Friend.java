@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table
 @Component
-@SequenceGenerator(name = "friendidseq", sequenceName="job_id_sequence", allocationSize = 1)
+@SequenceGenerator(name = "friendidseq", sequenceName="friend_sequence", allocationSize = 1)
 public class Friend {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "friendidseq")

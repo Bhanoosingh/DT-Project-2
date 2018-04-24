@@ -63,7 +63,7 @@ public class FriendDAOImpl implements FriendDAO {
 	public List<User> showSuggestedFriend(String loginname) {
 		Session session = sessionFactory.openSession();
 		Query query = session
-				.createSQLQuery("select * from userdetail where loginname not in (select friendloginname from friend)");
+				.createSQLQuery("select * from userrecord where email not in (select friendloginname from friend where loginname='"+loginname+"') and loginname != '"+loginname+"'");
 		List<User> suggestFriend = (List<User>) query.list();
 		return suggestFriend;
 	}
