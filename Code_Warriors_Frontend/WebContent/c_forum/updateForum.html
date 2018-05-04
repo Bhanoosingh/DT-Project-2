@@ -7,7 +7,7 @@
 	<script src="assets/js/angular.min.js"></script>
 	<script src="assets/js/codewarriors.js"></script>
   	<script src="c_user/UserController.js"></script>
-	<script src="assets/c_forum/ForumController.js"></script>
+	<script src="c_forum/ForumController.js"></script>
 <style>
 .btn {
 	background-color: DodgerBlue;
@@ -21,35 +21,29 @@
 .btn:hover {
 	background-color: Black;
 }
-body {
-	margin: 0;
-	padding: 0;
-	
-	font-size: 16px;
-	color: #222;
-	font-family: COTILLIO, sans-serif;
-	font-weight: 300;
-}
+body{margin: 0;	padding: 0;background:url('assets/images/profile.jpg');}
 #forum-box {
 	position: relative;
 	margin: 5% auto;
 	width: 900px;
-	height: 900px;
+	height: auto;
+	min-height:400px;
 	border-radius: 2px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	background-color: rgba(255,255,255,0.5);
 }
 </style>
 </head>
 
 <body ng-app="myApp">
-	<font color="white" face="verdana">
+	<font color="black" face="verdana">
 		<div id="forum-box" class="row" ng-controller="ForumController">
 			<div>
-				<font color="white" face="Edwardian Script ITC">
+				<font color="black" face="Edwardian Script ITC">
 					<h1 class="text-center">Update Forum</h1>
 				</font>
 			</div>
-			<form class="col-md-12 center-block" id="forumForm" method="POST">
+			<!-- <form class="col-md-12 center-block" id="forumForm" method="POST">
 				<div class="form-group">
 					<input type="text" class="form-control input-lg" name="forumName"
 						placeholder="Forum name" ng-model="forum.forumName" /><font
@@ -65,7 +59,7 @@ body {
 						value="Update Forum" ng-click="updateForum(forum.forumId)">
 					<input type="reset" class="btn btn-lg btn-default" value="Reset">
 				</div>
-			</form>
+			</form> -->
 			<form id="forumform" method="post">
 				<h3>List of Created Forums</h3>
 				<table class="table table-bordered">

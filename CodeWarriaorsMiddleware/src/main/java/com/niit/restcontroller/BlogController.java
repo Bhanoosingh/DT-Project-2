@@ -59,6 +59,7 @@ public class BlogController {
 		@PutMapping(value = "/updateBlog/{blogId}")
 		public ResponseEntity<String> updateBlog(@PathVariable("blogId") int blogId, @RequestBody Blog blog) {
 			System.out.println("Updating Blog " + blogId);
+			System.out.println("Updating Blog " + blog.getBlogId());
 			Blog mBlog = blogDAO.getBlog(blogId);
 			if (mBlog == null) {
 				System.out.println("Blog with blogId " + blogId + " Not Found");
@@ -68,9 +69,9 @@ public class BlogController {
 			mBlog.setBlogContent(blog.getBlogContent());
 			mBlog.setBlogName(blog.getBlogName());
 			mBlog.setCreateDate(new Date());
-			//mBlog.setLikes(blog.getLikes());
-			mBlog.setStatus(blog.getStatus());
-			mBlog.setUserName(blog.getUserName());
+			mBlog.setLikes(mBlog.getLikes());
+			mBlog.setStatus(mBlog.getStatus());
+			mBlog.setUserName(mBlog.getUserName());
 			
 			blogDAO.updateBlog(mBlog);
 			return new ResponseEntity<String>("Update Blog Success", HttpStatus.OK);

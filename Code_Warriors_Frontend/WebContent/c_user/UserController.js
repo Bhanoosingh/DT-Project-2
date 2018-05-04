@@ -23,13 +23,13 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 				console.log(response.status);
 				$scope.user=response.data;
 				$rootScope.currentUser=response.data;
-				$cookieStore.put('userrecord',response.data);
+				$cookieStore.put('userDetails',response.data);
 				console.log($rootScope.currentUser.role);
 				
 				if($rootScope.currentUser.role=='Admin'){
 					console.log("Admin");
 				}
-				if($rootScope.currentUser.role=='User'){
+				if($rootScope.currentUser.role=='USER'){
 					console.log("User");
 				}
 				$location.path("/");
@@ -41,11 +41,22 @@ myApp.controller("UserController",function($scope,$http,$location,$rootScope,$co
 			
 			console.log("Display Details function called : ");
 		};
+		
+		$scope.update = function(email) {
+			console.log('Entered into the Update  User method '+email);
+			$http.post("http://localhost:8085/CodeWarriaorsMiddleware/update/"+email,
+					$scope.user).then(function(response) {
+				console.log('Status text:' + response.statusText);
+				alert('updated details successfully..!!');
+				$location.path("/viewProfile");
+			});
+
+	};
 
 	$rootScope.logout=function(){
 		console.log('LogOut function');
 		delete $rootScope.currentUser;
-		$cookieStore.remove('userrecord');
+		$cookieStore.remove('userDetails');
 		$location.path("/");
 	}	
 });

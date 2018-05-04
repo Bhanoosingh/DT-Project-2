@@ -37,8 +37,8 @@ myApp.controller("BlogController",function($scope,$http,$location)
 				$http.put('http://localhost:8085/CodeWarriaorsMiddleware/updateBlog/'+ blogId, $scope.blog)
 				.then(fetchAllBlogs(), function(response){
 					console.log('updated blog'+ blogId+ ' successfully');
-					// $location.path('/updateBlog');
-					console.log(blogId +" updated successfully");
+					 $location.path('/updateBlog');
+					$window.alert(blogId +" updated successfully");
 				// $location.reload();
 				});
 				

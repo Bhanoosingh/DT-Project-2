@@ -61,7 +61,7 @@ public class FriendController {
 	public ResponseEntity<List<Friend>> showAllFriends(HttpSession session)
 	{
 		//String loginname=((UserDetail)session.getAttribute(("userdetail"))).getLoginname();
-		List<Friend> listAllFriends=friendDAO.showAllFriends("Shailendra");
+		List<Friend> listAllFriends=friendDAO.showAllFriends("sanjay@gmail.com");
 		if(listAllFriends.size()>0)
 		{
 			return new 	ResponseEntity<List<Friend>>(listAllFriends,HttpStatus.OK);	

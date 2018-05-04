@@ -57,18 +57,18 @@ public class UserController {
 	}
 
 	// ----------- Update User -----------------------------
-	@PutMapping(value = "/updateUser/{loginname}")
-	public ResponseEntity<String> updateUser(@PathVariable("loginname") String loginname, @RequestBody User userDetail) {
-		System.out.println("In updating user " + loginname);
-		User mUser = userDAO.getUser(loginname);
+	@PostMapping(value = "/update/{email}")
+	public ResponseEntity<String> updateUser(@PathVariable("email") String email, @RequestBody User userDetail) {
+		System.out.println("In updating user " + email);
+		User mUser = userDAO.getUser(email);
 		if (mUser == null) {
-			System.out.println("No user found with loginname " + loginname);
+			System.out.println("No user found with loginname " + email);
 			return new ResponseEntity<String>("No user found", HttpStatus.NOT_FOUND);
 		}
 
-	/*	mUser.setEmailId(userDetail.getEmailId());
-		mUser.setMobileNo(userDetail.getMobileNo());
-		mUser.setAddress(userDetail.getAddress());*/
+		mUser.setEmail(userDetail.getEmail());
+		mUser.setPhone(userDetail.getPhone());
+		mUser.setAddress(userDetail.getAddress());
 		mUser.setName(userDetail.getName());
 		userDAO.updateUser(mUser);
 		return new ResponseEntity<String>("User updated successfully", HttpStatus.OK);

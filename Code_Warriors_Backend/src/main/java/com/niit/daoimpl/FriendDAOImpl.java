@@ -63,7 +63,7 @@ public class FriendDAOImpl implements FriendDAO {
 	public List<User> showSuggestedFriend(String loginname) {
 		Session session = sessionFactory.openSession();
 		Query query = session
-				.createSQLQuery("select * from userrecord where email not in (select friendloginname from friend where loginname='"+loginname+"') and loginname != '"+loginname+"'");
+				.createSQLQuery("select * from userrecord where email not in (select friendloginname from friend where loginname='"+loginname+"' and loginname != '"+loginname+"'");
 		List<User> suggestFriend = (List<User>) query.list();
 		return suggestFriend;
 	}
@@ -72,7 +72,7 @@ public class FriendDAOImpl implements FriendDAO {
 	@Override
 	public List<Friend> showAllFriends(String loginname) {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Friend where loginname =:currentuser and status='A')");
+		Query query = session.createQuery("from Friend where loginname =:currentuser and status='A'");
 		query.setParameter("currentuser", loginname);
 		List<Friend> listFriends = (List<Friend>) query.list();
 		return listFriends;
@@ -82,7 +82,7 @@ public class FriendDAOImpl implements FriendDAO {
 	@Override
 	public List<Friend> showRequestPendingList(String loginname) {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from Friend where loginname =:currentuser and status='P')");
+		Query query = session.createQuery("from Friend where loginname =:currentuser and status='P'");
 		query.setParameter("currentuser", loginname);
 		List<Friend> listFriends = (List<Friend>) query.list();
 		return listFriends;

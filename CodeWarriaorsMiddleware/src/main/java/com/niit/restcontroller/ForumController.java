@@ -32,6 +32,7 @@ public class ForumController {
 		System.out.println("Inside insert forum");
 		forum.setCreatedDate(new Date());
 		forum.setStatus("A");
+		forum.setUserName("thakur91");
 		if (forumDAO.addForum(forum)) {
 			return new ResponseEntity<String>("Forum Added- Success", HttpStatus.OK);
 		} else {
@@ -43,12 +44,14 @@ public class ForumController {
 
 	@GetMapping(value = "/listForums")
 	public ResponseEntity<List<Forum>> listForum() {
-		List<Forum> listForums = forumDAO.listForum("shailendra91");
+		List<Forum> listForums = forumDAO.listForum("thakur91");
+		try {
 		if (listForums.size() != 0) {
 			return new ResponseEntity<List<Forum>>(listForums, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<List<Forum>>(listForums, HttpStatus.NOT_FOUND);
 		}
+		}catch(Exception e) {return new ResponseEntity<List<Forum>>(listForums, HttpStatus.NOT_FOUND);}
 	}
 
 	// ------------------Update Forum -----------------------------------

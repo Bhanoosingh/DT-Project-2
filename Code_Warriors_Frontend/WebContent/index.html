@@ -6,25 +6,28 @@
 	<title>codeWarriors</title>
 	<style>
 		li:hover{color:#bc21e0; font-size:16px;  border-radius:10px;border-right:none; border-left:none; border-top:solid 2px; box-shadow: 0px 0px 9px -1px #555;}
-		ul li{color:#3f064c; font-size:18px;}
-		ul li:hover{box-shadow: 0px 0px 9px -1px #555;font-size:22px;cursor: pointer; color:#bc21e0;}
+		ul li{color:#3f064c; font-size:16px;}
+		ul li:hover{box-shadow: 0px 0px 9px -1px #555;font-size:16px;cursor: pointer; color:#bc21e0;}
 	</style>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="assets/js/angular.min.js"></script>
-	<script src="assets/js/angular-route.js"></script>
-	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	  	
+		<script src="assets/js/angular.min.js"></script>
+		<script src="assets/js/angular-route.js"></script>	
 		<script src="assets/js/angular-cookies.js"></script>
 		<script src="assets/js/codewarriors.js"></script>
   		<script src="c_user/UserController.js"></script>
+  		<script src="c_forum/ForumController.js"></script>
   		<script src="c_blog/BlogController.js"></script>
+  		<script src="c_friend/FriendController.js"></script>
   		<script src="c_chat/ChatController.js"></script>
   		<script src="c_chat/ChatService.js"></script>
   		<script src="assets/js/lodash.js"></script>
   		<script src="assets/js/stomp.js"></script>
   		<script src="assets/js/sockjs.js"></script>
+  		
   		<link rel="stylesheet" href="assets/css/cw-styles.css"/>
 	
 	</head>
@@ -42,16 +45,11 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
     			<ul class="nav navbar-nav" style="padding-top:15px; padding-bottom:10px; font-size:20px;font-weight:normal;">
 					<li><a href="#!" style="color:#a120bf">Home</a></li>
-					<li ng-show="currentUser.role=='USER'||currentUser.role=='Role_Admin'"><a href="#!forum" style="color:#a120bf">Forum</a></li>
 					<li ng-show="currentUser.role=='USER'||currentUser.role=='Role_Admin'"><a href="#!job" style="color:#a120bf">Job</a></li>
 					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!about" style="color:#a120bf">About Us</a></li>
 					<li ng-hide="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!contact" style="color:#a120bf">Contact Us</a></li>
-					<!-- <li ng-show="currentUser.role=='Role_User'||currentUser.role=='Role_Admin'"><a href="#!uploadProfilePicture" style="color:white">Upload Profile Picture</a></li> -->
 					<li	ng-show="currentUser.role=='USER'||currentUser.role=='ADMIN'"><a href="#!chat" style="color:#a120bf">Chat</a></li>
-					<li	ng-show="currentUser.role=='USER'||currentUser.role=='ADMIN'"><a href="#!friend" style="color:#a120bf">Friend</a></li>
-</li>
-					
-					
+		
 					<li ng-hide="currentUser.role=='USER'||currentUser.role=='Admin'">
 						<a href="#!login" style="color:#a120bf">
 							<span class="glyphicon glyphicon-log-in"></span> Login
@@ -62,7 +60,16 @@
 							<span class="glyphicon glyphicon-user"></span> Register
 							</a>
 					</li>
-					<li ng-show="currentUser.role=='USER'" class="dropdown" style="padding-right:20px;padding-left:10px ">
+					<li ng-show="currentUser.role=='USER'||currentUser.role=='ADMIN'" class="dropdown" style="padding-right:20px;padding-left:10px ">
+						<p class="dropdown-toggle" data-toggle="dropdown" href="" style="color:#a120bf;padding-top:10px">Friend
+        				<span class="caret"></span></p>
+        				<ul class="dropdown-menu">
+          					<li><a href="#!friend">Friends</a></li>
+          					<li><a href="#!suggestedFriend">Suggested Friend</a></li>
+          					<li><a href="#!pendingFriend">Pending Friend Request</a></li>
+          				</ul>
+      				</li>
+					<li ng-show="currentUser.role=='USER'||currentUser.role=='ADMIN'" class="dropdown" style="padding-right:20px;padding-left:10px ">
 						<p class="dropdown-toggle" data-toggle="dropdown" href="#!blog" style="color:#a120bf;padding-top:10px">Blog
         				<span class="caret"></span></p>
         				<ul class="dropdown-menu">
@@ -71,25 +78,28 @@
           					<li><a href="#!blog">Show Blog</a></li>
           				</ul>
       				</li>
-      				<li ng-show="currentUser.role=='USER'" class="dropdown">
-						<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#a120bf;padding-top:10px">Profile
+      				<li ng-show="currentUser.role=='USER'||currentUser.role=='ADMIN'" class="dropdown" style="padding-right:20px;padding-left:10px ">
+						<p class="dropdown-toggle" data-toggle="dropdown" href="#!forum" style="color:#a120bf;padding-top:10px">Forum
         				<span class="caret"></span></p>
         				<ul class="dropdown-menu">
-        				
-          					<li><a href="#!displayProfile">View Profile</a></li>
-          					<li><a href="#">Update Profile</a></li>
-          					<li><a href="#!uploadProfilePicture">Upload Profile Picture</a></li>
+          					<li><a href="#!addForum">Add Forum</a></li>
+          					<li><a href="#!updateForum">Update Forum</a></li>
+          					<li><a href="#!forum">Show Forum</a></li>
           				</ul>
       				</li>
-      				<li	ng-show="currentUser.role=='ROLE_USER'||currentUser.role=='ROLE_ADMIN'"><a href="#!Chat">Chat</a></li>
+      				
+      				<!-- <li	ng-show="currentUser.role=='USER'||currentUser.role=='ROLE_ADMIN'"><a href="#!Chat" style="color:#a120bf;">Chat</a></li> -->
 				</ul>
 				<span class="nav navbar-nav navbar-right dropdown" ng-hide="currentUser==undefined" style="padding-top:20px">
-				<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#e0214d	;padding-top:10px; font-size:16px;margin-right: 60px;text-shadow: -2px 3px 7px #666;">Welcome {{currentUser.name}}
+				<p class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:deeppink;padding-top:10px; font-size:16px;margin-right: 60px;text-shadow: -2px 3px 7px #666; cursor: pointer;">Welcome {{currentUser.name}}
         				<span class="caret"></span></p>
 					<ul class="dropdown-menu" ng-controller="UserController">
         				
+        					<li><a href="#!displayProfile">View Profile</a></li>
+          					<li><a href="#!updateProfile">Update Profile</a></li>
+        					<li><a href="#!uploadProfilePicture">Upload Profile Picture</a></li>
           					<li><a href="#" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
-          					<li><a href="#!uploadProfilePicture">Upload Profile Picture</a></li>
+          					
           			</ul>
           			<img id="img1" ng-hide="currentUser==undefined"  
 					src="http://localhost:8085/CodeWarriaorsMiddleware/getImage/{{currentUser.email}}"

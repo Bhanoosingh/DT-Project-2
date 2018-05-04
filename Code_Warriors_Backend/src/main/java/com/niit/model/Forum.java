@@ -19,7 +19,7 @@ public class Forum {
 	private String forumContent;
 	private Date createdDate;
 	private String userName;
-	String status;
+	private String status;
 	
 	public String getStatus() {
 		return status;
